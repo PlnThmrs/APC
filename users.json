@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "nom": "Alice Dupont",
+      "email": "alice.dupont@example.com",
+      "score": 0,
+      "historique": "",
+      "actif": true
+    },
+    {
+      "id": 2,
+      "nom": "Bob Martin",
+      "email": "bob.martin@example.com",
+      "score":0,
+      "historique": "",
+      "actif": false
+    },
+    {
+      "id": 3,
+      "nom": "Charlie Durand",
+      "email": "charlie.durand@example.com",
+      "score": 0,
+      "historique": "",
+      "actif": true
+    }
+  ]
+}
