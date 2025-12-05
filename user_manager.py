@@ -16,9 +16,20 @@ def charger_utilisateurs():
     except Exception as e: 
         print(f"[ERREUR] Erreur de chargement des utilisateurs : {e}") 
         return {"users": []}
-def sauvegarder_utilisateurs(data): 
+    
+    
+def sauvegarder_utilisateurs(data):
     """Sauvegarde les données des utilisateurs dans users.json."""
-    print("sauvegarde utilsateurs")
+    try:
+        # Ouverture du fichier en écriture (écrase l'ancien contenu)
+        with open(FICHIER_UTILISATEURS, 'w', encoding='utf-8') as f:
+            # Conversion du dictionnaire Python en JSON formaté
+            json.dump(data, f, indent=4, ensure_ascii=False)
+
+    except Exception as e:
+        # Affichage d'une erreur si la sauvegarde échoue
+        print(f"[ERREUR] Impossible de sauvegarder les utilisateurs : {e}")
+
 
 
 def creer_ou_charger_utilisateur(nom): 
@@ -50,4 +61,11 @@ def mettre_a_jour_score(nom, points, details_exo):
 #appel de la fonction
 
 creer_ou_charger_utilisateur("toto")
+ 
+
+data = charger_utilisateurs()
+
+sauvegarder_utilisateurs(data)
+
+
 
