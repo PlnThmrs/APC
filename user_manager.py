@@ -69,11 +69,15 @@ def mettre_a_jour_score(nom, points, details_exo):
     sauvegarder_utilisateurs(data)
 
 
+<<<<<<< HEAD
 creer_ou_charger_utilisateur("toto")
  
 data = charger_utilisateurs()
 print(data)
 sauvegarder_utilisateurs(data)
+=======
+creer_ou_charger_utilisateur("victorino")
+>>>>>>> 8c4089263f429f87049ec0728fdf05c15cb70884
 
 mettre_a_jour_score("toto", 10,"exo1")
 

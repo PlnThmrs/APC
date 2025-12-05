@@ -1,9 +1,51 @@
 {
     "users": [
         {
+<<<<<<< HEAD
             "nom": "toto",
             "score": 0,
             "historique": []
+=======
+            "nom": "Alice Dupont",
+            "email": "alice.dupont@example.com",
+            "historique": "",
+            "score": 0,
+            "actif": true
+        },
+        {
+            "nom": "Bob Martin",
+            "email": "bob.martin@example.com",
+            "historique": "",
+            "score": 0,
+            "actif": false
+        },
+        {
+            "nom": "Charlie Durand",
+            "email": "charlie.durand@example.com",
+            "historique": "",
+            "score": 0,
+            "actif": true
+        },
+        {
+            "nom": "toto",
+            "score": 0,
+            "historique": []
+        },
+        {
+            "nom": "magalie",
+            "score": 0,
+            "historique": []
+        },
+        {
+            "nom": "test",
+            "score": 0,
+            "historique": []
+        },
+        {
+            "nom": "victorino",
+            "score": 0,
+            "historique": []
+>>>>>>> 8c4089263f429f87049ec0728fdf05c15cb70884
         }
     ]
 }
