@@ -30,10 +30,7 @@ def sauvegarder_utilisateurs(data):
         # Affichage d'une erreur si la sauvegarde échoue
         print(f"[ERREUR] Impossible de sauvegarder les utilisateurs : {e}")
 
-
-
 def creer_ou_charger_utilisateur(nom): 
-    """Crée un nouvel utilisateur s'il n'existe pas ou retourne ses données."""
     """Crée un nouvel utilisateur s'il n'existe pas ou retourne ses données."""
     data = charger_utilisateurs()
 
@@ -57,10 +54,19 @@ def creer_ou_charger_utilisateur(nom):
 
 def mettre_a_jour_score(nom, points, details_exo): 
     """Met à jour le score et l'historique d'un utilisateur."""
-    print("mise à jour utilsateurs")
-#appel de la fonction
+    data = charger_utilisateurs()
+    for user in data["users"]:
+        if user.get("nom") == nom:
+            user["score"] += points
+            user["historique"].append({"points": points, "details": details_exo})
+            sauvegarder_utilisateurs(data)     # Sauvegarde après modification
+            print("Score mis à jour pour",nom)
+            return user
+    print("Utilisateur",nom,"introuvable.")
+    return None
 
-creer_ou_charger_utilisateur("victorino")
+creer_ou_charger_utilisateur("magalie")
+mettre_a_jour_score("magalie",10,[10, "python"])
 
 
 
