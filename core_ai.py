@@ -14,7 +14,13 @@ class GeminiClient :
         self.client = genai.Client(api_key=api_key) 
         self.model = 'gemini-2.5-flash' # Modèle rapide et efficace pour les tâches textuelles 
     def generer_exercice(self, theme, niveau): 
-        """Génère une consigne et une solution attendue en JSON.""" 
+        """Génère une consigne et une solution attendue en JSON.
+        retourne un fichier response.txt avec 2 champs JSON: 'consigne' et 'solution
+        pour récupérer les données:
+        objetGemini=GeminiClient() #instancier un objet GeminiClient
+        reponse=test.generer_exercice(theme,niveau) #récupérer le fichier dans une variable
+        reponse.get('consigne','Consigne non disponible') #pour récupérer la consigne
+        reponse.get('solution','Solution non disponible') #pour récupérer la solution""" 
         prompt = f""" Génère un exercice de programmation Python de niveau {niveau} sur le thème '{theme}'. La sortie doit être STRICTEMENT au format JSON, sans aucun préambule textuel ni balisage Markdown (ex: ```json). Le JSON doit contenir deux clés : 'consigne' (le texte de l'exercice) et 'solution' (le code Python attendu). """
         try: 
             response = self.client.models.generate_content( 
@@ -32,8 +38,3 @@ class GeminiClient :
             return {}
     def evaluer_code(self, code_eleve, consigne, solution_attendue):
         """Sauvegarde les données des utilisateurs dans users.json."""
-        
-#test=GeminiClient()
-#reponse=test.generer_exercice("Fonctions","Débutant")
-#print(reponse.get('consigne','Consigne non disponible'))
-#print(reponse.get('solution','Solution non disponible'))
