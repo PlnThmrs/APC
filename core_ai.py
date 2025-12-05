@@ -6,13 +6,13 @@ from google.genai import errors
 
 class GeminiClient :
     """Gère toutes les interactions avec l'API Gemini"""
-    def __init__(self, api_key="AIzaSyA-NKOz4d_VEnXYrP3TrKBadEYonDma5-0"): 
+    def __init__(self, api_key, model): 
         """Initialise le client Gemini.""" 
         if not api_key: 
             raise ValueError("La clé API Gemini est manquante.") 
     # Le client la clé passée ou la variable d'environnement GEMINI_API_KEY 
         self.client = genai.Client(api_key=api_key) 
-        self.model = 'gemini-2.5-flash' # Modèle rapide et efficace pour les tâches textuelles 
+        self.model = model # Modèle rapide et efficace pour les tâches textuelles 
     def generer_exercice(self, theme, niveau): 
         """Génère une consigne et une solution attendue en JSON.
         retourne un fichier JSON "response" avec 2 champs : 'consigne' et 'solution
