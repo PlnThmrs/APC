@@ -3,6 +3,7 @@ import os
 import json 
 from google import genai 
 from google.genai import errors
+
 class GeminiClient :
     """Gère toutes les interactions avec l'API Gemini"""
     def __init__(self, api_key="AIzaSyA-NKOz4d_VEnXYrP3TrKBadEYonDma5-0"): 
@@ -20,11 +21,18 @@ class GeminiClient :
                     model=self.model, 
                     contents=prompt, 
                     config={"response_mime_type": "application/json"} 
-            ) 
-            # La réponse est directement une chaîne JSON grâce à response_mime_type return json.loads(response.text)
+            )
+            return json.loads(response.text)
+            # La réponse est directement une chaîne JSON grâce à response_mime_type return json.loads(response.txt)
         except json.JSONDecodeError: 
             print("[ERREUR FICHIER] Fichier users.json corrompu. Retourne des données vides.") 
             return {} 
         except Exception as e: 
             print(f"[ERREUR] Erreur de chargement des utilisateurs : {e}") 
             return {}
+    def evaluer_code(self, code_eleve, consigne, solution_attendue):
+        """Sauvegarde les données des utilisateurs dans users.json."""
+        
+test=GeminiClient()
+reponse=test.generer_exercice("Fonctions","Débutant")
+print(reponse.get('solution','Solution non disponible'))
