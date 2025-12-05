@@ -1,60 +1,9 @@
 {
-<<<<<<< HEAD
-  "users": [
-    {
-      "nom": "Alice Dupont",
-      "email": "alice.dupont@example.com",
-      "historique": "",
-      "score": 0,
-      "actif": true
-    },
-    {
-      "nom": "Bob Martin",
-      "email": "bob.martin@example.com",
-      "historique": "",
-      "score":0,
-      "actif": false
-    },
-    {
-      "nom": "Charlie Durand",
-      "email": "charlie.durand@example.com",
-      "historique": "",
-      "score": 0,
-      "actif": true
-    }
-  ]
-=======
     "users": [
         {
-            "id": 1,
-            "nom": "Alice Dupont",
-            "email": "alice.dupont@example.com",
+            "nom": "toto",
             "score": 0,
-            "historique": "",
-            "theme": "",
-            "niveau": "",
-            "actif": true
-        },
-        {
-            "id": 2,
-            "nom": "Bob Martin",
-            "email": "bob.martin@example.com",
-            "score": 0,
-            "historique": "",
-            "theme": "",
-            "niveau": "",
-            "actif": false
-        },
-        {
-            "id": 3,
-            "nom": "Charlie Durand",
-            "email": "charlie.durand@example.com",
-            "score": 0,
-            "historique": "",
-            "theme": "",
-            "niveau": "",
-            "actif": true
+            "historique": []
         }
     ]
->>>>>>> 4d29180f60a813c88283d011f5a6396b6b439571
 }

@@ -62,7 +62,6 @@ def mettre_a_jour_score(nom, points, details_exo):
 
 creer_ou_charger_utilisateur("toto")
  
-
 data = charger_utilisateurs()
 
 sauvegarder_utilisateurs(data)
