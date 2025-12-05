@@ -2,6 +2,13 @@
     "users": [
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+            "nom": "toto",
+            "score": 0,
+            "historique": []
+=======
+>>>>>>> e12af4a7fda40f9d39cfa145434321b9256b55d4
             "nom": "Alice Dupont",
             "email": "alice.dupont@example.com",
             "historique": "",
@@ -41,11 +48,15 @@
             "nom": "victorino",
             "score": 0,
             "historique": []
+<<<<<<< HEAD
 =======
             "nom": "toto",
             "score": 0,
             "historique": []
 >>>>>>> a825011 (Travail en cours)
+=======
+>>>>>>> 8c4089263f429f87049ec0728fdf05c15cb70884
+>>>>>>> e12af4a7fda40f9d39cfa145434321b9256b55d4
         }
     ]
 }
