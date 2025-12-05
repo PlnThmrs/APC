@@ -57,8 +57,17 @@ def creer_ou_charger_utilisateur(nom):
 
 def mettre_a_jour_score(nom, points, details_exo): 
     """Met à jour le score et l'historique d'un utilisateur."""
-    print("mise à jour utilsateurs")
-#appel de la fonction
+    # Si l'utilisateur n'existe pas encore, on le crée
+
+    # Mise à jour du score
+    data[nom]["score"] += points
+
+    # Ajout d'un détail dans l'historique
+    data[nom]["historique"].append(details_exo)
+
+    # Sauvegarde dans users.json
+    sauvegarder_utilisateurs(data)
+
 
 <<<<<<< HEAD
 creer_ou_charger_utilisateur("victorino")
@@ -66,9 +75,11 @@ creer_ou_charger_utilisateur("victorino")
 creer_ou_charger_utilisateur("toto")
  
 data = charger_utilisateurs()
-
+print(data)
 sauvegarder_utilisateurs(data)
 >>>>>>> a825011 (Travail en cours)
+
+mettre_a_jour_score("toto", 10,"exo1")
 
 
 
