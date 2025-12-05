@@ -1,6 +1,7 @@
 {
     "users": [
         {
+<<<<<<< HEAD
             "nom": "victorino",
             "score": 10,
             "historique": [
@@ -12,6 +13,53 @@
                     ]
                 }
             ]
+=======
+<<<<<<< HEAD
+            "nom": "Alice Dupont",
+            "email": "alice.dupont@example.com",
+            "historique": "",
+            "score": 0,
+            "actif": true
+        },
+        {
+            "nom": "Bob Martin",
+            "email": "bob.martin@example.com",
+            "historique": "",
+            "score": 0,
+            "actif": false
+        },
+        {
+            "nom": "Charlie Durand",
+            "email": "charlie.durand@example.com",
+            "historique": "",
+            "score": 0,
+            "actif": true
+        },
+        {
+            "nom": "toto",
+            "score": 0,
+            "historique": []
+        },
+        {
+            "nom": "magalie",
+            "score": 0,
+            "historique": []
+        },
+        {
+            "nom": "test",
+            "score": 0,
+            "historique": []
+        },
+        {
+            "nom": "victorino",
+            "score": 0,
+            "historique": []
+=======
+            "nom": "toto",
+            "score": 0,
+            "historique": []
+>>>>>>> a825011 (Travail en cours)
+>>>>>>> 7403511 (merge)
         }
 
     ]

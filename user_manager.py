@@ -65,7 +65,19 @@ def mettre_a_jour_score(nom, points, details_exo):
     print("Utilisateur",nom,"introuvable.")
     return None
 
+<<<<<<< HEAD
 creer_ou_charger_utilisateur("magalie")
 mettre_a_jour_score("magalie",10,[10, "python"])
+=======
+<<<<<<< HEAD
+creer_ou_charger_utilisateur("victorino")
+=======
+creer_ou_charger_utilisateur("toto")
+ 
+data = charger_utilisateurs()
+
+sauvegarder_utilisateurs(data)
+>>>>>>> a825011 (Travail en cours)
+>>>>>>> 7403511 (merge)
 
 
