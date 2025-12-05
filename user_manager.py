@@ -69,4 +69,3 @@ creer_ou_charger_utilisateur("magalie")
 mettre_a_jour_score("magalie",10,[10, "python"])
 
 
-

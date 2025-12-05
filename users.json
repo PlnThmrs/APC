@@ -2,33 +2,6 @@
     "users": [
         {
             "nom": "victorino",
-            "score": 30,
-            "historique": [
-                {
-                    "points": 10,
-                    "details": [
-                        10,
-                        "python"
-                    ]
-                },
-                {
-                    "points": 10,
-                    "details": [
-                        10,
-                        "python"
-                    ]
-                },
-                {
-                    "points": 10,
-                    "details": [
-                        10,
-                        "python"
-                    ]
-                }
-            ]
-        },
-        {
-            "nom": "magalie",
             "score": 10,
             "historique": [
                 {
@@ -40,5 +13,6 @@
                 }
             ]
         }
+
     ]
 }
