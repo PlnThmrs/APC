@@ -62,10 +62,3 @@ class GeminiClient :
             except Exception as e: 
                 print(f"[ERREUR] Erreur de chargement des utilisateurs : {e}") 
                 return {}
-objetGemini=GeminiClient() #instancier un objet GeminiClient
-consigne="Écrivez une fonction Python nommée `saluer_utilisateur` qui prend un argument : `nom` (une chaîne de caractères). Cette fonction doit retourner une chaîne de caractères qui dit 'Bonjour, [nom] !'.\n\nAprès avoir défini la fonction, appelez-la avec la valeur 'Sophie' et affichez le message retourné par la fonction."
-solution_attendue='def saluer_utilisateur(nom):\n    """\n    Prend un nom en argument et retourne un message de salutation.\n    """\n    message = "Bonjour, " + nom + " !"\n    return message\n\n# Appel de la fonction et affichage du résultat\nnom_utilisateur = "Sophie"\nmessage_salutation = saluer_utilisateur(nom_utilisateur)\nprint(message_salutation)\n\n# Résultat attendu : Bonjour, Sophie !'
-code_eleve='def saluer_utilisateur(nom):\n    print("Bonjour ",nom)\n\n# Appel de la fonction\nnom_utilisateur = "Bob"\nsaluer_utilisateur(nom_utilisateur)\n# Résultat attendu : Bonjour Bob'
-reponse=objetGemini.evaluer_code(code_eleve, consigne, solution_attendue) #récupérer le fichier dans une variable
-print(reponse.get('score','Score non disponible')) #pour récupérer le score
-print(reponse.get('evaluation','Evaluation non disponible'))
