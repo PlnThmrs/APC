@@ -49,5 +49,5 @@ def mettre_a_jour_score(nom, points, details_exo):
     print("mise à jour utilsateurs")
 #appel de la fonction
 
-creer_ou_charger_utilisateur("Bob Martin")
+creer_ou_charger_utilisateur("toto")
 
