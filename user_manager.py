@@ -60,7 +60,15 @@ def mettre_a_jour_score(nom, points, details_exo):
     print("mise à jour utilsateurs")
 #appel de la fonction
 
+<<<<<<< HEAD
 creer_ou_charger_utilisateur("victorino")
+=======
+creer_ou_charger_utilisateur("toto")
+ 
+data = charger_utilisateurs()
+
+sauvegarder_utilisateurs(data)
+>>>>>>> a825011 (Travail en cours)
 
 
 
