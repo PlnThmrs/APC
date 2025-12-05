@@ -33,6 +33,7 @@ class GeminiClient :
     def evaluer_code(self, code_eleve, consigne, solution_attendue):
         """Sauvegarde les données des utilisateurs dans users.json."""
         
-test=GeminiClient()
-reponse=test.generer_exercice("Fonctions","Débutant")
-print(reponse.get('solution','Solution non disponible'))
+#test=GeminiClient()
+#reponse=test.generer_exercice("Fonctions","Débutant")
+#print(reponse.get('consigne','Consigne non disponible'))
+#print(reponse.get('solution','Solution non disponible'))
