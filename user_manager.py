@@ -64,10 +64,3 @@ def mettre_a_jour_score(nom, points, details_exo):
             return user
     print("Utilisateur",nom,"introuvable.")
     return None
-
-
-creer_ou_charger_utilisateur("magalie")
-mettre_a_jour_score("magalie",10,[10, "python"])
-
-
-
