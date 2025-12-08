@@ -67,7 +67,7 @@ def lancer_exercice():
     consigne=reponse.get('consigne','Consigne non disponible') #pour récupérer la consigne
     solution=reponse.get('solution','Solution non disponible') #pour récupérer la solution
     print(consigne) #je récupére une consigne et une solution, j'affiche seulement la consigne
-    code_eleve=input('Entrez votre réponse (copier/coller en 1 seule ligne, finir toutes les lignes avec un "\n"') :") #je demande la réponse du user
+    code_eleve=input('Entrez votre réponse (copier/coller en 1 seule ligne, finir toutes les lignes avec un "\n") :') #je demande la réponse du user
     
     #Evaluation du résultat
     print("Evaluation de la réponse en cours...")
