@@ -12,8 +12,7 @@ NIVEAUX = ["Débutant", "Intermédiaire", "Avancé"]
 utilisateur_courant = None 
 gemini_client = None
 model='gemini-2.5-flash'
-api-key=input('Entrez votre clé API Gemini :') #sera demandé au moment du lancement du module
-
+#la clé API est appelé dans la fonction main ultérieurment, pas besoin de la commander à cet endroit
 def afficher_menu(): 
     """Affiche le menu principal de l'application.""" 
     if utilisateur_courant: #si un utilisateur courant a été renseigné, par défaut None
@@ -56,13 +55,19 @@ def lancer_exercice():
 
 def main(): 
     """Fonction principale de l'application."""
-    #première fonction: afficher_menu ==> ça va (retourner un chiffre=choix du menu)
-    #je dois utiliser ce chiffre pour déterminer quelle fonction utiliser
-    #   option 1: appel de la fonction choisir_utilisateur
-    #   option 2: appel de la fonction lancer_utilisateur
-    #   option 3: sortir de la fonction main
-
-
+    api_key=""
+    while api_key=="":
+        api_key=input('Entrez votre clé API Gemini :') #clé API Gemini demandé 
+    while True: #pour relancer systematiquement les choix tant que 
+        choix=int(afficher_menu())#première fonction: afficher_menu ==> ça va (retourner un chiffre=choix du menu)
+        #je dois utiliser ce chiffre pour déterminer quelle fonction utiliser
+        if choix==1:#   option 1: appel de la fonction choisir_utilisateur
+            choisir_utilisateur()
+        if choix==2: #option 2: appel de la fonction lancer_exercice
+            lancer_exercice() 
+        if choix==3: #   option 3: sortir de la fonction main
+            print("Merci d'avoir joué")
+            break #je casse la boucle initiale, le jeu est finie"
 
 if __name__ == "__main__": 
     main()     # Appel de main = début du pprogramme
