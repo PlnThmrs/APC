@@ -62,12 +62,12 @@ def lancer_exercice():
     theme=THEMES[choix_theme-1]
 
     #Génération de l'exercice
-    print(f"Génération d'un exercice niveau {niveau} sur : {theme} en cours...")
+    print(f"Génération d'un exercice niveau {niveau} sur {theme} en cours...")
     reponse=gemini_client.generer_exercice(theme,niveau) # j'appelle la fonction generer_exercice du module core_ai: j'ai besoin d'un thème et d'un niveau
     consigne=reponse.get('consigne','Consigne non disponible') #pour récupérer la consigne
     solution=reponse.get('solution','Solution non disponible') #pour récupérer la solution
     print(consigne) #je récupére une consigne et une solution, j'affiche seulement la consigne
-    code_eleve=input('Entrez votre réponse (copier/coller en 1 seule ligne, finir toutes les lignes avec un "\n") :') #je demande la réponse du user
+    code_eleve=input('Entrez votre réponse (finir toutes les lignes avec un \\n et copier/coller en 1 seule ligne) :') #je demande la réponse du user
     
     #Evaluation du résultat
     print("Evaluation de la réponse en cours...")
