@@ -31,9 +31,15 @@ def afficher_menu():
 def choisir_utilisateur(): 
     """Permet de choisir ou créer un profil utilisateur."""
     #J'ai besoin du nom, je demande au user
-    #j'appelle la fonction creer_ou_charger_utilisateur du module user_manager
-    #je mets à jour la variable utilisateur_courant
-    #je refais afficher menu?
+    utilisateur_courant=input("Entrée votre nom utilisateur").strip()
+
+    # Vérification basique : éviter les entrées vides
+    if not utilisateur_courant:
+        print("Le nom d'utilisateur ne peut pas être vide.")
+        return None
+
+     #j'appelle la fonction creer_ou_charger_utilisateur du module user_manager
+    return um.creer_ou_charger_utilisateur(utilisateur_courant)
 
 
 def lancer_exercice(): 
