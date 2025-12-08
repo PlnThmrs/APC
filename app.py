@@ -12,6 +12,7 @@ NIVEAUX = ["Débutant", "Intermédiaire", "Avancé"]
 utilisateur_courant = None 
 gemini_client = None
 model='gemini-2.5-flash'
+
 #la clé API est appelé dans la fonction main ultérieurment, pas besoin de la commander à cet endroit
 def afficher_menu(): 
     """Affiche le menu principal de l'application.""" 
@@ -30,7 +31,7 @@ def afficher_menu():
 def choisir_utilisateur(): 
     """Permet de choisir ou créer un profil utilisateur."""
     #J'ai besoin du nom, je demande au user
-    utilisateur_courant=input("Entrée votre nom utilisateur").strip()
+    utilisateur_courant=input("Entrez votre nom utilisateur : ").strip()
 
     # Vérification basique : éviter les entrées vides
     if not utilisateur_courant:
@@ -42,60 +43,51 @@ def choisir_utilisateur():
 
 
 def lancer_exercice():
-    print("Génération d'un exercice")
- 
-    themes = {
-        "1": "Fonctions",
-        "2": "Listes",
-        "3": "Dictionnaires",
-        "4": "POO",
-        "5": "Fichiers et Exceptions",
-    }
- 
-    print("Choisissez un thème :")
-    for numero, nom in themes:
-        print(f"{numero}. {nom}")
- 
-    choix_theme = input("Votre choix (1-5) : ")
- 
-    if choix_theme not in themes:
-        print("Choix de thème invalide.")
- 
-    niveaux = {
-        "1": "Débutant",
-        "2": "Intermédiaire",
-        "3": "Avancé",
-    }
- 
-    print("Choisissez un niveau :")
-    for numero, nom in niveaux:
-        print(f"{numero}, {nom}")
- 
-    choix_niveau = input("Votre choix (1-3) : ")
- 
-    print(f"Génération d'un exercice niveau {niveaux[choix_niveau]} sur : {themes[choix_theme]}")
     """Gère le processus complet de génération, soumission et évaluation de l'exercice."""
-    gemini_client=GeminiClient(api_key,model) #j'instancie ma classe GeminiClient du module core_ai sur la variable gemini_client avec en paramètre la clé API
-    reponse=gemini_client.generer_exercice(themes[choix_theme],niveaux[choix_niveau]) # j'appelle la fonction generer_exercice du module core_ai: j'ai besoin d'un thème et d'un niveau
+    print("Génération d'un exercice")
+    
+    #Choix du thème
+    print("Choisissez un thème :")
+    for i, theme in enumerate(THEMES):
+        print(f"[{i+1}] {theme}")
+    choix_theme = int(input("Votre choix (1-5) : "))
+    
+    #Choix du niveau
+    print("Choisissez un niveau :")
+    for i, niveau in enumerate(NIVEAUX):
+        print(f"[{i+1}] {niveau}")
+    choix_niveau = int(input("Votre choix (1-3) : "))
+
+    niveau=NIVEAUX[choix_niveau-1]
+    theme=THEMES[choix_theme-1]
+
+    #Génération de l'exercice
+    print(f"Génération d'un exercice niveau {niveau} sur : {theme} en cours...")
+    reponse=gemini_client.generer_exercice(theme,niveau) # j'appelle la fonction generer_exercice du module core_ai: j'ai besoin d'un thème et d'un niveau
     consigne=reponse.get('consigne','Consigne non disponible') #pour récupérer la consigne
     solution=reponse.get('solution','Solution non disponible') #pour récupérer la solution
     print(consigne) #je récupére une consigne et une solution, j'affiche seulement la consigne
-    code_eleve=input("Entrez votre réponse :") #je demande la réponse du user
+    code_eleve=input('Entrez votre réponse (copier/coller en 1 seule ligne, finir toutes les lignes avec un "\n"') :") #je demande la réponse du user
+    
+    #Evaluation du résultat
+    print("Evaluation de la réponse en cours...")
     evaluation=gemini_client.evaluer_code(code_eleve, consigne, solution) #j'envoie cette réponse, la consigne et la réponse attendue à la fonction evaluer_code du module core_ai
-    points_eleve=evaluation.get('score','score non disponible')
+    points_eleve=int(evaluation.get('score','score non disponible'))
     commentaire=evaluation.get('evaluation','Evaluation non disponible')
-    print(points_eleve,"/10")
+    print(f"Score : {points_eleve}/ 10")
     print(commentaire)
     print("Solution attendue :")
     print(solution) #je récupère le score, le commentaire et la solution attendue et j'affiche
+    
+    #Màj du profil
     um.mettre_a_jour_score(utilisateur_courant, points_eleve, consigne) #j'envoie le nom, score et la consigne à la fonction mettre_a_jour_score(nom, points, details_exo) du module user_manager
-    um.sauvegarder_utilisateurs(data) #je sauvegarde grâce à la fonction
+    um.sauvegarder_utilisateurs(utilisateur_courant) #je sauvegarde grâce à la fonction
 
 def main(): 
     """Fonction principale de l'application."""
-    api_key=""
-    while api_key=="":
-        api_key=input('Entrez votre clé API Gemini :') #clé API Gemini demandé 
+    api_key=input('Entrez votre clé API Gemini :') #clé API Gemini demandé
+    global gemini_client
+    gemini_client=GeminiClient(api_key,model)
     while True: #pour relancer systematiquement les choix tant que 
         choix=int(afficher_menu())#première fonction: afficher_menu ==> ça va (retourner un chiffre=choix du menu)
         #je dois utiliser ce chiffre pour déterminer quelle fonction utiliser
