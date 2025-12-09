@@ -1,95 +1,37 @@
 {
-    "users": [
-        {},
-        {
-            "nom": "magalie",
-            "score": 120,
-            "historique": [
-                {
-                    "points": 10,
-                    "details": [
-                        10,
-                        "python"
-                    ]
-                },
-                {
-                    "points": 10,
-                    "details": [
-                        10,
-                        "python"
-                    ]
-                },
-                {
-                    "points": 10,
-                    "details": [
-                        10,
-                        "python"
-                    ]
-                },
-                {
-                    "points": 10,
-                    "details": [
-                        10,
-                        "python"
-                    ]
-                },
-                {
-                    "points": 10,
-                    "details": [
-                        10,
-                        "python"
-                    ]
-                },
-                {
-                    "points": 10,
-                    "details": [
-                        10,
-                        "python"
-                    ]
-                },
-                {
-                    "points": 10,
-                    "details": [
-                        10,
-                        "python"
-                    ]
-                },
-                {
-                    "points": 10,
-                    "details": [
-                        10,
-                        "python"
-                    ]
-                },
-                {
-                    "points": 10,
-                    "details": [
-                        10,
-                        "python"
-                    ]
-                },
-                {
-                    "points": 10,
-                    "details": [
-                        10,
-                        "python"
-                    ]
-                },
-                {
-                    "points": 10,
-                    "details": [
-                        10,
-                        "python"
-                    ]
-                },
-                {
-                    "points": 10,
-                    "details": [
-                        10,
-                        "python"
-                    ]
-                }
-            ]
-        }
-    ]
+    "exemple": {
+        "score": 100,
+        "historique": [
+            {
+                "theme": "Fonctions",
+                "niveau": "Avancé",
+                "note": 0
+            },
+            {
+                "theme": "Listes",
+                "niveau": "Débutant",
+                "note": 10
+            }
+        ]
+    },
+    "pauline": {
+        "score": 200,
+        "historique": [
+            {
+                "theme": "Fonctions",
+                "niveau": "Débutant",
+                "note": 10
+            },
+            {
+                "theme": "Fonctions",
+                "niveau": "Débutant",
+                "note": 10
+            },
+            {
+                "theme": "Fonctions",
+                "niveau": "Débutant",
+                "note": 0
+            }
+        ]
+    }
 }

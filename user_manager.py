@@ -1,7 +1,8 @@
 # user_manager.py 
 import json 
 import os 
-FICHIER_UTILISATEURS = 'users.json' 
+FICHIER_UTILISATEURS = 'users.json'
+
 def charger_utilisateurs(): 
     """Charge les données des utilisateurs depuis users.json.""" 
     try: 
@@ -35,32 +36,25 @@ def creer_ou_charger_utilisateur(nom):
     data = charger_utilisateurs()
 
     # Vérifier si l'utilisateur existe déjà
-    for user in data["users"]:
-        if user.get("nom") == nom:
-            print("Utilisateur" ,nom," déjà existant.")
-            return user
+    if nom in data:
+            print(f"Utilisateur {nom} déjà existant.")
+            return data[nom]
 
     # Sinon, créer un nouvel utilisateur
-    nouvel_utilisateur = {
-        "nom": nom,
-        "score": 0,
-        "historique": []
-    }
-    data["users"].append(nouvel_utilisateur)
+    data[nom] = {'score':0,'historique':[]}
     sauvegarder_utilisateurs(data)
-    print("Nouvel utilisateur",nom,"créé.")
-    return nouvel_utilisateur
+    print(f"Nouvel utilisateur {nom} créé.")
+    return data[nom]
 
-
-def mettre_a_jour_score(nom, points, details_exo): 
+def mettre_a_jour_score(nom, note, niveau, theme): 
     """Met à jour le score et l'historique d'un utilisateur."""
     data = charger_utilisateurs()
-    for user in data["users"]:
-        if user.get("nom") == nom:
-            user["score"] += points
-            user["historique"].append({"points": points, "details": details_exo})
-            sauvegarder_utilisateurs(data)     # Sauvegarde après modification
-            print("Score mis à jour pour",nom)
-            return user
-    print("Utilisateur",nom,"introuvable.")
-    return None
+    if nom in data:
+        data[nom]['score'] += (note*10)
+        data[nom]['historique'].append({"theme": theme, "niveau":niveau, "note": note})
+        sauvegarder_utilisateurs(data) #Sauvegarde après modification
+        print("Score mis à jour pour",nom)
+        return data[nom]
+    else:
+        print(f"Utilisateur {nom} introuvable.")
+        return None

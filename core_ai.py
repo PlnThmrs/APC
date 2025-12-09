@@ -28,14 +28,10 @@ class GeminiClient :
                     contents=prompt, 
                     config={"response_mime_type": "application/json"} 
             )
-            return json.loads(response.text)
-            # La réponse est directement une chaîne JSON grâce à response_mime_type return json.loads(response.text)
-        except json.JSONDecodeError: 
-            print("[ERREUR FICHIER] Fichier users.json corrompu. Retourne des données vides.") 
-            return {} 
-        except Exception as e: 
-            print(f"[ERREUR] Erreur de chargement des utilisateurs : {e}") 
-            return {}
+            return json.loads(response.text) # La réponse est directement une chaîne JSON grâce à response_mime_type return json.loads(response.text)
+        except:
+            print("Erreur dans l'évaluation du code, abandon")
+            return None
     def evaluer_code(self, code_eleve, consigne, solution_attendue):
         """Génère le score de l'utilisateur entre 0 et 10 en fonction de la pertinence de sa réponse et par rapport à la consigne et la solution attendue
         retourne un fichier JSON "response" avec  champs JSON: 'score','evalutation'
@@ -44,21 +40,14 @@ class GeminiClient :
         reponse=objetGemini.evaluer_code(code_eleve, consigne, solution_attendue) #récupérer le fichier dans une variable
         reponse.get('score','score non disponible') #pour récupérer le score
         reponse.get('evaluation','Evaluation non disponible') #pour récupérer l'évaluation'"""
-        prompt = f"""Voici la consigne de l'exercice:{consigne} et voici la solution attendue: {solution_attendue}. Voici la réponse de l'élève: {code_eleve}. Génère un score entre 0 et 10 par rapport à la pertinence de sa réponse (0 étant un échec et 10 une réussite totale), ainsi qu'un bref commentaire sur la pertinence de sa réponse. La sortie doit être STRICTEMENT au format JSON, sans aucun préambule textuel ni balisage Markdown (ex: ```json). Le JSON doit contenir deux clés : 'score' (le score de l'élève) et 'evaluation' (le commentaire sur la pertinence de la réponse de l'élève à l'exercice). """
-        if code_eleve=="":
-            print("Es-tu sûr d'avoir transmis ta réponse ? ")
-        else:
-            try: 
-                response = self.client.models.generate_content( 
-                        model=self.model, 
-                        contents=prompt, 
-                        config={"response_mime_type": "application/json"} 
-                )
-                return json.loads(response.text)
-                # La réponse est directement une chaîne JSON grâce à response_mime_type return json.loads(response.text)
-            except json.JSONDecodeError: 
-                print("[ERREUR FICHIER] Fichier users.json corrompu. Retourne des données vides.") 
-                return {} 
-            except Exception as e: 
-                print(f"[ERREUR] Erreur de chargement des utilisateurs : {e}") 
-                return {}
+        prompt = f"""Voici la consigne de l'exercice:{consigne} et voici la solution attendue: {solution_attendue}. Voici ma réponse: {code_eleve}. Génère un score entre 0 et 10 par rapport à la pertinence de ma réponse (0 étant un échec et 10 une réussite totale), ainsi qu'un commentaire bref mais encourageant sur la pertinence de ma réponse. La sortie doit être STRICTEMENT au format JSON, sans aucun préambule textuel ni balisage Markdown (ex: ```json). Le JSON doit contenir deux clés : 'score' (mon score) et 'evaluation' (le commentaire sur la pertinence de ma réponse à l'exercice). """
+        try: 
+            response = self.client.models.generate_content( 
+                    model=self.model, 
+                    contents=prompt, 
+                    config={"response_mime_type": "application/json"} 
+            )
+            return json.loads(response.text) # La réponse est directement une chaîne JSON grâce à response_mime_type return json.loads(response.text)
+        except:
+            print("Erreur dans l'évaluation du code, abandon")
+            return None
